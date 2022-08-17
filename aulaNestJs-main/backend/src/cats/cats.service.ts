@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCatDto } from './dto/cats.dto';
+import { CreateCat } from './entity/create.cat';
 
 @Injectable()
 export class CatsService {
@@ -8,6 +9,7 @@ export class CatsService {
   create(cat: CreateCatDto) {
     // inserir no banco de dados usando o repository
     this.cats.push(cat);
+    this.catsRepository.save(CreateCat);
   }
 
   findAll(): CreateCatDto[] {
